@@ -21,7 +21,7 @@ import com.springcloud.microservices.models.CurrencyConversionBean;
  * Specify list of servers to send the request to
  */
 @FeignClient(name = "currency-exchange-service")
-@RibbonClient
+@RibbonClient(name = "currency-exchange-service")
 public interface CurrencyEchangeServiceProxy {
 	
 	/**
