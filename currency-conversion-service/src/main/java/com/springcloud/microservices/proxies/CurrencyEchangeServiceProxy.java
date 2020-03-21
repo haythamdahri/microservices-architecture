@@ -20,7 +20,7 @@ import com.springcloud.microservices.models.CurrencyConversionBean;
  * RibbonClient must receive same name as the microservice wich we want to talk to
  * Specify list of servers to send the request to
  */
-@FeignClient(name = "netflix-zuul-api-gateway")
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "currency-exchange-service")
 public interface CurrencyEchangeServiceProxy {
 	

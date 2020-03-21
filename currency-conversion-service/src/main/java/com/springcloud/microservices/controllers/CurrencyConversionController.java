@@ -16,11 +16,14 @@ import org.springframework.web.client.RestTemplate;
 import com.springcloud.microservices.models.CurrencyConversionBean;
 import com.springcloud.microservices.proxies.CurrencyEchangeServiceProxy;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author HAYTHAM DAHRI Currency conversion rest controller
  */
 @RestController
 @RequestMapping(path = "/currency-converter")
+@Slf4j
 public class CurrencyConversionController {
 	
 	private static final String currencyExchangeMicroservice = "http://localhost:8000/currency-exchange/from/{from}/to/{to}";
@@ -61,6 +64,8 @@ public class CurrencyConversionController {
 		
 		CurrencyConversionBean currencyConversionBean = this.currencyEchangeServiceProxy.getCurrencyExchange(from, to).getBody();
 		currencyConversionBean.setQuantity(quantity);
+
+		log.info("{}", currencyConversionBean);
 		
 		// Calculate total Amount
 		currencyConversionBean.calculateTotalAmount();

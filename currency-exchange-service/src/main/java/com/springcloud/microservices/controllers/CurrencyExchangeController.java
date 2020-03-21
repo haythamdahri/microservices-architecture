@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springcloud.microservices.entities.CurrencyExchange;
 import com.springcloud.microservices.repositories.CurrencyExchangeRepository;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author HAYTHAM DAHRI Currency exchange rest controller class
  */
 @RestController
 @RequestMapping(path = "/currency-exchange")
-@Log4j2
+@Slf4j
 public class CurrencyExchangeController {
 
 	/**
@@ -42,7 +42,7 @@ public class CurrencyExchangeController {
 		if (currencyExchange != null) {
 			currencyExchange.setPort(Integer.parseInt(this.environment.getProperty("local.server.port")));
 		}
-		log.debug("Currency exchange ===> " + currencyExchange);
+		log.info("{}", currencyExchange);
 		return new ResponseEntity<>(currencyExchange, HttpStatus.OK);
 	}
 
